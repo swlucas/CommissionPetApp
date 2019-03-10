@@ -1,0 +1,28 @@
+page-start {
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 20%;
+    width: 70%;
+  }
+  ion-content {
+    height: 100%;
+    width: 100%;
+
+    background: linear-gradient(
+      180deg,
+      rgba(104, 238, 51, 0.68) 12.52%,
+      rgba(104, 238, 51, 0.68) 12.52%,
+      rgba(172, 236, 53, 0.527) 89.52%
+    );
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .button-center {
+    position: relative;
+    top: 40%;
+  }
+}

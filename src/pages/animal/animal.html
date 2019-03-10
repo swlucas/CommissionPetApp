@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Animais</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let animal of animals">
+
+      <ion-item (click)="openModal(animal,'view')">
+        <h2>{{animal.name}}</h2>
+        <ion-note>{{animal.species}}</ion-note>
+      </ion-item>
+      <ion-item-options side="left">
+        <ion-row>
+          <ion-col>
+            <button (click)="openModal(animal)" ion-button icon-start round small color="yelow">
+              <img height="15px" width="15px" style="margin-bottom: 3px" src="../../assets/imgs/pen.png">
+              <span>Editar</span>
+            </button>
+          </ion-col>
+
+          <ion-col>
+            <button (click)="solicitDelete(animal.id,animal.name)" ion-button icon-start round small color="danger">
+              <ion-icon name="trash"></ion-icon>
+              <span>Apagar</span>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+  <!-- <ion-fab right bottom>
+    <button (click)="openModal()" ion-fab color="light">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab> -->
+
+</ion-content>

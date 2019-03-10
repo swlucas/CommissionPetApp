@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Commission Pet
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="logout()">
+        <span ion-text color="primary">Sair</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <ion-card color="primary">
+          <ion-card-header>
+            Animais
+          </ion-card-header>
+          <ion-card-content>
+            {{dashboard.animal}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6>
+        <ion-card color="primary">
+          <ion-card-header>
+            Atendimentos
+          </ion-card-header>
+          <ion-card-content>
+            {{dashboard.attendances}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <ion-card color="primary">
+          <ion-card-header>
+            Total a receber
+          </ion-card-header>
+          <ion-card-content>
+            R$ {{dashboard.earnings}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-content padding>
+  <ion-fab right bottom>
+    <button ion-fab color="dark" id="plusButton">
+      <ion-icon name="add"></ion-icon>
+    </button>
+    <ion-fab-list side="left">
+      <button ion-fab color="dark" (click)="goAttendancePage()" id="attendanceButton">
+        <ion-icon name="ios-briefcase"></ion-icon>
+        <div class="label">Atendimento</div>
+      </button>
+      <button ion-fab color="dark" (click)="goAnimalPage()" id="animalButton">
+        <ion-icon name="paw"></ion-icon>
+        <div class="label">Animais</div>
+      </button>
+      <button ion-fab color="dark" (click)="goServicePage()" id="serviceButton">
+        <ion-icon name="ios-cut"></ion-icon>
+        <div class="label">Serviços</div>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Description
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary">Fechar</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="attendanceForm" (ngSubmit)="onSubmit(); $event.Prevent">
+    <ion-list>
+      <ion-input type="hidden" formControlName="id" value="{{attendance.id}}"></ion-input>
+      <ion-item>
+        <ion-label floating>Animal</ion-label>
+        <ion-select [(ngModel)]="attendance.animal_id" formControlName="animal_id" interface="popover">
+          <ion-option *ngFor="let animal of animals" [value]="animal.id">{{animal.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Serviço</ion-label>
+        <ion-select multiple="true" [(ngModel)]="attendance.service_id" formControlName="service_id" interface="popover" (ionChange)="addChip()">
+          <ion-option *ngFor="let service of services" [value]="service.id">{{service.name}} - {{service.percentage}}%</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngFor="let chip of chips; let pos = index">
+      <ion-chip>
+        <ion-label>{{chip.name}}-{{chip.percentage}}</ion-label>
+        <ion-input formControlName="value" placeholder="Valor" [(ngModel)]="attendance.value[pos]"></ion-input>
+      </ion-chip>
+    </ion-list>
+
+    <button *ngIf="!attendance.name && !action" ion-button round (click)="createAttendance()" type="button" [disabled]="attendanceForm.invalid">Adicionar</button>
+    <!-- <button *ngIf="attendance.name" ion-button round (click)="editAttendance(attendance.id,attendance)" type="button" [disabled]="attendanceForm.invalid">Editar</button> -->
+  </form>
+
+</ion-content>

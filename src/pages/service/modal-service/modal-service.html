@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Description
+      </ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+          <span ion-text color="primary">Fechar</span>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+  
+    <form [formGroup]="serviceForm" (ngSubmit)="onSubmit(); $event.Prevent">
+      <ion-list>
+        <ion-input type="hidden" formControlName="id" value="{{service.id}}"></ion-input>
+      
+        <ion-item>
+          <ion-label floating>Nome</ion-label>
+          <ion-input type="text" formControlName="name" value="{{service.name}}"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Porcentagem</ion-label>
+          <ion-input type="number" formControlName="percentage" value="{{service.percentage}}"></ion-input>
+        </ion-item>
+   
+      </ion-list>
+      <button *ngIf="!service.name" ion-button round (click)="createService()" type="button" [disabled]="serviceForm.invalid ">Adicionar</button>
+      <button *ngIf="service.name" ion-button round (click)="editService(service.id,service)" type="button" [disabled]="serviceForm.invalid ">Editar</button>
+    </form>
+  
+  </ion-content>

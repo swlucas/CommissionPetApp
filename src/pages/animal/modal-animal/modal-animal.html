@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{animal.name}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary">Fechar</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="animalForm" (ngSubmit)="onSubmit(); $event.Prevent">
+    <ion-list>
+      <ion-input type="hidden" formControlName="id" value="{{animal.id}}"></ion-input>
+      <ion-item>
+        <ion-label floating>Nome</ion-label>
+        <ion-input type="text" formControlName="name" value="{{animal.name}}"></ion-input>
+      </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-label floating>Espécie</ion-label>
+              <ion-select [(ngModel)]="animal.species" formControlName="species" interface="popover">
+                <ion-option value="Canino">Canino</ion-option>
+                <ion-option value="Felino">Felino</ion-option>
+              </ion-select>
+              <!-- <ion-input type="text" formControlName="species" value="{{animal.species}}"></ion-input> -->
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-label floating>Genero</ion-label>
+              <ion-select [(ngModel)]="animal.gender" formControlName="gender" interface="popover">
+                <ion-option value="Macho">Macho</ion-option>
+                <ion-option value="Fêmea">Fêmea</ion-option>
+              </ion-select>
+              <!-- <ion-input type="text" formControlName="gender" value="{{animal.gender}}"></ion-input> -->
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-item>
+        <ion-label floating>Raça</ion-label>
+        <ion-input type="text" formControlName="breed" value="{{animal.breed}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Pelagem</ion-label>
+        <ion-input type="text" formControlName="fur" value="{{animal.fur}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>KG</ion-label>
+        <ion-input type="text" formControlName="weight" value="{{animal.weight}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Idade</ion-label>
+        <ion-input type="text" formControlName="age" value="{{animal.age}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Proprietário</ion-label>
+        <ion-input type="text" formControlName="owner" value="{{animal.owner}}"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    <button *ngIf="!animal.name" ion-button round (click)="createAnimal()" type="button" [disabled]="animalForm.invalid ">Adicionar</button>
+    <button *ngIf="animal.name && !action" ion-button round (click)="editAnimal(animal.id,animal)" type="button" [disabled]="animalForm.invalid ">Editar</button>
+  </form>
+
+</ion-content>

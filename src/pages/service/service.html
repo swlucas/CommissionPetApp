@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Serviços</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let service of services">
+      <ion-item>
+        <h2>{{service.name}}</h2>
+        <ion-note>{{service.percentage}}%</ion-note>
+      </ion-item>
+      <ion-item-options side="left">
+        <ion-row>
+          <ion-col>
+            <button (click)="openModal(service)" ion-button icon-start round small color="yelow">
+              <ion-icon name="create"></ion-icon>
+              <span>Editar</span>
+            </button>
+          </ion-col>
+
+          <ion-col>
+            <button (click)="solicitDelete(service.id,service.name)" ion-button icon-start round small color="danger">
+              <ion-icon name="trash"></ion-icon>
+              <span>Apagar</span>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

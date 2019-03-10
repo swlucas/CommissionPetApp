@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Atendimentos</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <ion-list no-lines>
+    <ion-item-sliding *ngFor="let attendance of attendances">
+
+      <!-- <ion-item (click)="openModal(attendance,'view')"> -->
+      <ion-item>
+        <ion-icon name="paw" item-start></ion-icon>
+        <h2> {{attendance.animal.name}}</h2>
+        <p>
+          <ion-note>
+            <ion-icon name="calendar" small> {{attendance.created_at|date: "dd/MM/yy "}}</ion-icon>
+            <ion-icon name="time" small> {{attendance.created_at|date: "HH:mm a"}}</ion-icon>
+          </ion-note>
+        </p>
+      </ion-item>
+      <ion-item-options side="left">
+        <ion-row>
+          <!-- <ion-col>
+            <button (click)="openModal(attendance)" ion-button icon-start round small color="yelow">
+              <img height="15px" width="15px" style="margin-bottom: 3px" src="../../assets/imgs/pen.png">
+              <span>Editar</span>
+            </button>
+          </ion-col> -->
+
+          <ion-col>
+            <button (click)="solicitDelete(attendance.id,attendance.animal.name)" ion-button icon-start round small color="danger">
+              <ion-icon name="trash"></ion-icon>
+              <span>Apagar</span>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+  <!-- <ion-fab right bottom>
+    <button (click)="openModal()" ion-fab color="light">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab> -->
+
+</ion-content>
